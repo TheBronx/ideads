@@ -1,0 +1,19 @@
+<section data-ng-controller="AdsController" data-ng-init="find()">
+	<div class="page-header">
+		<h1>Ads</h1>
+	</div>
+	<div class="list-group">
+		<a data-ng-repeat="ad in ads" data-ng-href="#!/ads/{{ad._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Created on
+				<span data-ng-bind="ad.created | date:'mediumDate'"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="ad.name"></h4>
+			<p>Campaign: <span class="list-group-item-text" data-ng-bind="ad.campaign.name"></span></p>
+            <input type="checkbox" data-ng-model="ad.enabled" disabled> Enabled
+		</a>
+	</div>
+	<div class="alert alert-warning text-center" data-ng-if="ads.$resolved && !ads.length">
+		No ads yet, why don't you <a href="/#!/ads/create">create one</a>?
+	</div>
+</section>
